@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="uz-Latn">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sardorbek &amp; Jasminaxon - Nikoh to'yi</title>
+  <meta name="description" content="Sardorbek va Jasminaxonning nikoh to'yiga taklifnoma.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sardorbek &amp; Jasminaxon - Nikoh to'yi">
+  <meta property="og:description" content="Sardorbek va Jasminaxonning nikoh to'yiga taklifnoma.">
+  <script type="module" crossorigin="" src="./files/main.js.Без названия"></script>
+  <link rel="stylesheet" crossorigin="" href="./files/main.css">
+  <style>
+    /* Экран открытия пригласительного для принудительного запуска музыки */
+    #audio-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #ffffff;
+      z-index: 999999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    #audio-overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .overlay-content {
+      max-width: 400px;
+      width: 100%;
+    }
+    .overlay-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1d3557;
+      margin-bottom: 8px;
+      font-family: inherit;
+    }
+    .overlay-subtitle {
+      font-size: 16px;
+      color: #666666;
+      margin-bottom: 30px;
+    }
+
+    /* Swipe to Unlock Slider Styling */
+    .swipe-container {
+      position: relative;
+      width: 100%;
+      height: 60px;
+      background: #f0f4f8;
+      border-radius: 50px;
+      overflow: hidden;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: pan-y;
+    }
+
+    .swipe-text {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1d3557;
+      opacity: 0.8;
+      pointer-events: none;
+      z-index: 1;
+      transition: opacity 0.2s ease;
+      padding-left: 30px;
+    }
+
+    .swipe-handle {
+      position: absolute;
+      left: 5px;
+      top: 5px;
+      width: 50px;
+      height: 50px;
+      background: #1d3557;
+      border-radius: 50%;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      box-shadow: 0 8px 20px rgba(29, 53, 87, 0.3);
+      cursor: grab;
+      z-index: 2;
+    }
+
+    .swipe-handle:active {
+      cursor: grabbing;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ОВЕРЛЕЙ ДЛЯ ОБХОДА БЛОКИРОВКИ ЗВУКА НА ТЕЛЕФОНАХ -->
+  <div id="audio-overlay">
+    <div class="overlay-content">
+      <div class="overlay-title">Sardorbek &amp; Jasminaxon</div>
+      <div class="overlay-subtitle">Nikoh to'yiga taklifnoma</div>
+      
+      <!-- SWIPE TO UNLOCK SLIDER -->
+      <div class="swipe-container" id="swipeTrack">
+        <span class="swipe-text" id="swipeText">Taklifnomani ochish 🕊️</span>
+        <div class="swipe-handle" id="swipeHandle">➔</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="root">
+    <main class="invitation-shell">
+      
+      <!-- HERO SECTION -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__content">
+          <div class="hero__blessing" dir="rtl">
+            <p>بسم الله الرحمن الرحيم</p>
+            <p>السلام عليكم ورحمة الله وبركاته</p>
+          </div>
+          <p class="hero__eyebrow">Nikoh to'yiga taklifnoma</p>
+          <div class="hero__illustration" aria-hidden="true">
+            <img alt="" src="./files/taklifnoma1.png">
+          </div>
+          <h1 class="hero__names" id="hero-title">Sardorbek<span class="hero__ampersand">&amp;</span>Jasminaxon</h1>
+          <p class="hero__date">Juma, <span class="number-font">11</span>-sentabr <span class="number-font">2026</span></p>
+        </div>
+      </section>
+
+      <!-- PHOTO SECTION -->
+      <section class="photo-section" aria-labelledby="photo-section-title">
+        <div class="photo-frame">
+          <span class="photo-frame__line photo-frame__line--top" aria-hidden="true"></span>
+          <span class="photo-frame__line photo-frame__line--right" aria-hidden="true"></span>
+          <span class="photo-frame__line photo-frame__line--bottom" aria-hidden="true"></span>
+          <span class="photo-frame__line photo-frame__line--left" aria-hidden="true"></span>
+          <img class="photo-frame__image" alt="Sardorbek va Jasminaxon" src="./files/image2.jpg">
+        </div>
+        <p class="photo-section__title" id="photo-section-title">Nikoh to'yi</p>
+      </section>
+
+      <!-- COUNTDOWN SECTION -->
+      <section class="countdown-section" aria-labelledby="countdown-section-title">
+        <div class="countdown-section__panel">
+          <p class="countdown-section__title" id="countdown-section-title">To'ygacha qoldi</p>
+          <div class="countdown-section__timer" aria-label="To'ygacha qolgan vaqt">
+            <div class="countdown-section__item"><span class="countdown-section__value" id="timer-days">00</span><span class="countdown-section__label">Kun</span><span class="countdown-section__colon" aria-hidden="true">:</span></div>
+            <div class="countdown-section__item"><span class="countdown-section__value" id="timer-hours">00</span><span class="countdown-section__label">Soat</span><span class="countdown-section__colon" aria-hidden="true">:</span></div>
+            <div class="countdown-section__item"><span class="countdown-section__value" id="timer-minutes">00</span><span class="countdown-section__label">Daqiqa</span><span class="countdown-section__colon" aria-hidden="true">:</span></div>
+            <div class="countdown-section__item"><span class="countdown-section__value" id="timer-seconds">00</span><span class="countdown-section__label">Soniya</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CALENDAR SECTION -->
+      <section class="calendar-section" aria-labelledby="calendar-title">
+        <div class="calendar-card">
+          <img class="calendar-card__frame" alt="" aria-hidden="true" src="./files/taklifnoma5.png">
+          <div class="calendar-card__content">
+            <h2 class="calendar-card__title" id="calendar-title">Sentabr, <span class="number-font">2026</span></h2>
+            <div class="calendar-card__weekdays" aria-hidden="true">
+              <span>D</span><span>S</span><span>Ch</span><span>P</span><span>J</span><span>Sh</span><span>Ya</span>
+            </div>
+            <div class="calendar-card__grid" aria-label="sentabr 2026 taqvimi">
+              <span class="calendar-card__day"></span>
+              <span class="calendar-card__day">1</span><span class="calendar-card__day">2</span><span class="calendar-card__day">3</span><span class="calendar-card__day">4</span><span class="calendar-card__day">5</span><span class="calendar-card__day">6</span>
+              <span class="calendar-card__day">7</span><span class="calendar-card__day">8</span><span class="calendar-card__day">9</span><span class="calendar-card__day">10</span>
+              <span class="calendar-card__day is-selected">11</span>
+              <span class="calendar-card__day">12</span><span class="calendar-card__day">13</span><span class="calendar-card__day">14</span><span class="calendar-card__day">15</span>
+              <span class="calendar-card__day">16</span><span class="calendar-card__day">17</span><span class="calendar-card__day">18</span><span class="calendar-card__day">19</span>
+              <span class="calendar-card__day">20</span><span class="calendar-card__day">21</span><span class="calendar-card__day">22</span><span class="calendar-card__day">23</span>
+              <span class="calendar-card__day">24</span><span class="calendar-card__day">25</span><span class="calendar-card__day">26</span><span class="calendar-card__day">27</span>
+              <span class="calendar-card__day">28</span><span class="calendar-card__day">29</span><span class="calendar-card__day">30</span>
+            </div>
+            <p class="calendar-card__footer"><span class="number-font">11</span>-sentabr <span class="number-font">2026</span> - Nikoh to'yi - <span class="number-font">18:00</span></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- LOCATION SECTION -->
+      <section class="location-section" aria-labelledby="location-title">
+        <h2 class="location-section__title" id="location-title">To'yxona manzili</h2>
+        <div class="location-section__image" aria-hidden="true">
+          <img alt="" src="./files/taklifnoma6.png">
+        </div>
+        <p class="location-section__address">Dunyo Saroyi Restorani<br><small style="font-size: 0.85em; opacity: 0.8;">Toshkent shahar, Mirzo - Ulug'bek tumani, Qorasuv-1</small></p>
+        <a class="pill-button location-section__button" href="https://www.google.com/search?q=dunyo+toyxonasi+qorasuv" target="_blank" rel="noreferrer">Google xaritada ochish</a>
+      </section>
+
+      <!-- INVITATION TEXT -->
+      <section class="invitation-text" aria-labelledby="invitation-text-title">
+        <h2 class="invitation-text__title" id="invitation-text-title">Aziz mehmonlar</h2>
+        <p class="invitation-text__featured-date number-font">11.09.2026</p>
+        <p class="invitation-text__body">Sizlarni <strong class="invitation-text__highlight">Sardorbek va Jasminaxon</strong>ning nikoh to'yi munosabati bilan <strong class="invitation-text__highlight">11.09.2026</strong> kuni soat <strong class="invitation-text__highlight">18:00</strong> da bo'lib o'tadigan to'y marosimiga taklif qilamiz.</p>
+        <p class="invitation-text__body">Manzil: Dunyo Saroyi Restorani (Toshkent shahar, Mirzo - Ulug'bek tumani, Qorasuv-1).</p>
+        <p class="invitation-text__body">Tashrifingiz davramizga fayz, qalbimizga esa unutilmas xursandchilik bag'ishlaydi.</p>
+      </section>
+
+      <!-- CLOSING SECTION -->
+      <section class="closing-section" aria-labelledby="closing-title">
+        <div class="closing-section__image" aria-hidden="true">
+          <img alt="" src="./files/taklifnoma7.png">
+        </div>
+        <h2 class="closing-section__title" id="closing-title">Sizlarni to'yimizga taklif qilamiz</h2>
+        <p class="closing-section__text">Quvonchli kunimizda sizlarni kutib qolamiz</p>
+      </section>
+
+      <!-- AUDIO ELEMENT -->
+      <audio id="myAudio" loop playsinline preload="auto">
+        <source src="yor-yor.mp3" type="audio/mpeg">
+        <source src="./files/yor-yor.mp3" type="audio/mpeg">
+      </audio>
+
+    </main>
+  </div>
+
+  <script>
+    // 1. Таймер обратного отсчета
+    const targetDate = new Date("September 11, 2026 18:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        document.getElementById("timer-days").innerText = days < 10 ? "0" + days : days;
+        document.getElementById("timer-hours").innerText = hours < 10 ? "0" + hours : hours;
+        document.getElementById("timer-minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+        document.getElementById("timer-seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+      } else {
+        document.getElementById("timer-days").innerText = "00";
+        document.getElementById("timer-hours").innerText = "00";
+        document.getElementById("timer-minutes").innerText = "00";
+        document.getElementById("timer-seconds").innerText = "00";
+      }
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // 2. Swipe to Unlock и логика запуска аудио
+    const audio = document.getElementById("myAudio");
+    const overlay = document.getElementById("audio-overlay");
+    const handle = document.getElementById("swipeHandle");
+    const track = document.getElementById("swipeTrack");
+    const text = document.getElementById("swipeText");
+
+    let isDragging = false;
+    let startX = 0;
+    let currentX = 0;
+    let maxDistance = 0;
+    let unlocked = false;
+
+    function getClientX(e) {
+      return e.touches ? e.touches[0].clientX : e.clientX;
+    }
+
+    function startDrag(e) {
+      if (unlocked) return;
+      isDragging = true;
+      startX = getClientX(e);
+      maxDistance = track.clientWidth - handle.clientWidth - 10;
+      handle.style.transition = 'none';
+    }
+
+    function moveDrag(e) {
+      if (!isDragging || unlocked) return;
+      const x = getClientX(e);
+      const deltaX = x - startX;
+      
+      currentX = Math.max(0, Math.min(deltaX, maxDistance));
+      handle.style.transform = `translateX(${currentX}px)`;
+      
+      const opacity = 1 - (currentX / maxDistance);
+      text.style.opacity = Math.max(0, opacity);
+
+      if (currentX >= maxDistance) {
+        unlocked = true;
+        isDragging = false;
+        unlockAndPlayAudio();
+      }
+    }
+
+    function endDrag() {
+      if (!isDragging || unlocked) return;
+      isDragging = false;
+      handle.style.transition = 'transform 0.3s ease';
+      handle.style.transform = 'translateX(0px)';
+      text.style.opacity = 0.8;
+    }
+
+    function unlockAndPlayAudio() {
+      audio.play().then(() => {
+        overlay.classList.add("hidden");
+      }).catch(err => {
+        console.log("Воспроизведение заблокировано:", err);
+        overlay.classList.add("hidden");
+      });
+    }
+
+    handle.addEventListener("mousedown", startDrag);
+    window.addEventListener("mousemove", moveDrag);
+    window.addEventListener("mouseup", endDrag);
+
+    handle.addEventListener("touchstart", startDrag, { passive: true });
+    window.addEventListener("touchmove", moveDrag, { passive: true });
+    window.addEventListener("touchend", endDrag);
+  </script>
+</body>
+</html>
